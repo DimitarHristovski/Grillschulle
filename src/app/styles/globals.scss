@@ -1,0 +1,25 @@
+@import "./variables.module";
+@import "./mixins.module";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  background-color: $background-color-fill !important;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+a {
+  text-decoration: none !important;
+  margin-top: 0px;
+  list-style-type: none !important;
+}
