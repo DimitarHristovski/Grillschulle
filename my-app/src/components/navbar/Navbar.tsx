@@ -7,11 +7,7 @@ export const Navbar = () => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="/images/logo/logo.webp"
-            className="h-8"
-            alt="Flowbite Logo"
-          />
+          <img src="/images/logo/logo.webp" className="h-8" alt="micha" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Micha
           </span>
@@ -48,7 +44,9 @@ export const Navbar = () => {
             <li>
               <a
                 href="#"
+
                 className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 dark:text-white "
+
                 aria-current="page"
               >
                 Home
@@ -57,7 +55,9 @@ export const Navbar = () => {
             <li>
               <a
                 href="#"
+
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+
               >
                 Grill
               </a>
@@ -65,7 +65,9 @@ export const Navbar = () => {
             <li>
               <a
                 href="#"
+
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+
               >
                 Shop
               </a>
@@ -74,7 +76,9 @@ export const Navbar = () => {
             <li>
               <a
                 href="#"
+
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+
               >
                 Contact
               </a>
