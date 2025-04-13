@@ -1,10 +1,11 @@
-import { ShoppingBag, X, Minus, Plus, Trash2 } from 'lucide-react';
-import { useQuoteStore } from '../store/useQuoteStore';
-import { useState } from 'react';
+import { ShoppingBag, X, Minus, Plus, Trash2 } from "lucide-react";
+import { useQuoteStore } from "../../store/useQuoteStore";
+import { useState } from "react";
 
 export default function QuoteDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, removeItem, updateQuantity, getTotalPrice, peopleCount } = useQuoteStore();
+  const { items, removeItem, updateQuantity, getTotalPrice, peopleCount } =
+    useQuoteStore();
 
   return (
     <>
@@ -60,14 +61,23 @@ export default function QuoteDrawer() {
                           </p>
                           <div className="flex items-center gap-2 mt-2">
                             <button
-                              onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.id,
+                                  Math.max(0, item.quantity - 1)
+                                )
+                              }
                               className="p-1 hover:bg-gray-200 rounded"
                             >
                               <Minus className="w-4 h-4" />
                             </button>
-                            <span className="w-8 text-center">{item.quantity}</span>
+                            <span className="w-8 text-center">
+                              {item.quantity}
+                            </span>
                             <button
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              onClick={() =>
+                                updateQuantity(item.id, item.quantity + 1)
+                              }
                               className="p-1 hover:bg-gray-200 rounded"
                             >
                               <Plus className="w-4 h-4" />
@@ -91,12 +101,16 @@ export default function QuoteDrawer() {
                     </div>
                     <div className="flex justify-between items-center font-bold text-lg">
                       <span>Total:</span>
-                      <span className="text-orange-600">€{getTotalPrice().toFixed(2)}</span>
+                      <span className="text-orange-600">
+                        €{getTotalPrice().toFixed(2)}
+                      </span>
                     </div>
                     <button
                       onClick={() => {
                         // Handle quote submission
-                        alert('Thank you for your quote request! We will contact you shortly.');
+                        alert(
+                          "Thank you for your quote request! We will contact you shortly."
+                        );
                         setIsOpen(false);
                       }}
                       className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
