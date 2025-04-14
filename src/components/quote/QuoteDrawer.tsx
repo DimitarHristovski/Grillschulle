@@ -124,12 +124,16 @@ export default function QuoteDrawer() {
                 <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
                   <CheckCircle className="w-16 h-16 text-green-500 mb-6" />
                   <h2 className="text-2xl font-bold mb-4">
-                    Vielen Dank für Ihre Anfrage!
+                    Ihre Kalkulation ist abgeschlossen!
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    Wir haben Ihre Anfrage für {peopleCount} Personen erhalten
-                    und werden uns in Kürze unter {email} bei Ihnen melden.
+                    Die Berechnung für Ihre Essensbestellung wurde erfolgreich
+                    durchgeführt. <br />
+                    Die PDF-Datei mit Ihrer Kalkulation wurde heruntergeladen.{" "}
+                    <br />
+                    Bei Fragen stehen wir Ihnen gerne zur Verfügung.
                   </p>
+
                   <div className="bg-gray-50 p-4 rounded-lg w-full mb-6">
                     <h3 className="font-semibold mb-2">
                       Ihre Essensbestellung Cost:
