@@ -11,7 +11,7 @@ export default function Catalog() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const addItem = useQuoteStore((state) => state.addItem);
 
-  const categories = ["Beef", "Pork", "Lamb", "Chicken", "Sausages"];
+  const categories = ["Beef", "Steak", "Lamm", "Hähnchen", "Würst"];
 
   const filteredItems = meatItems.filter((item) => {
     const matchesSearch =

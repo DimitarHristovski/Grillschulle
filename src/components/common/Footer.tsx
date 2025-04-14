@@ -1,5 +1,5 @@
 import { MapContainer } from "../map/MapContainer";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { contactData } from "../../data/Data"; // Adjust the import path as needed
 
 export default function Footer() {
   return (
@@ -14,85 +14,82 @@ export default function Footer() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Kontakt & Standort</h3>
-              <p className="text-gray-600 mb-6">
-                Besuchen Sie uns in unserem Hauptquartier oder kontaktieren Sie
-                uns für weitere Informationen über unseren BBQ-Service.
-              </p>
+              <h3 className="text-2xl font-bold mb-4">{contactData.title}</h3>
+              <p className="text-gray-600 mb-6">{contactData.description}</p>
             </div>
 
             <div className="space-y-4">
+              {/* Phone */}
               <div className="flex items-center gap-3">
                 <div className="bg-orange-100 p-2 rounded-full">
-                  <Phone className="w-5 h-5 text-orange-600" />
+                  {contactData.phone.icon}
                 </div>
                 <div>
-                  <p className="font-semibold">Telefon</p>
+                  <p className="font-semibold">{contactData.phone.label}</p>
                   <a
-                    href="tel:+491234567890"
+                    href={contactData.phone.href}
                     className="text-orange-600 hover:text-orange-700"
                   >
-                    +49 123 456 7890
+                    {contactData.phone.value}
                   </a>
                 </div>
               </div>
 
+              {/* Email */}
               <div className="flex items-center gap-3">
                 <div className="bg-orange-100 p-2 rounded-full">
-                  <Mail className="w-5 h-5 text-orange-600" />
+                  {contactData.email.icon}
                 </div>
                 <div>
-                  <p className="font-semibold">Email</p>
+                  <p className="font-semibold">{contactData.email.label}</p>
                   <a
-                    href="mailto:info@grillshulle.de"
+                    href={contactData.email.href}
                     className="text-orange-600 hover:text-orange-700"
                   >
-                    info@grillshulle.de
+                    {contactData.email.value}
                   </a>
                 </div>
               </div>
 
+              {/* Address */}
               <div>
-                <p className="font-semibold mb-2">Adresse</p>
+                <p className="font-semibold mb-2">
+                  {contactData.address.label}
+                </p>
                 <p className="text-gray-600">
-                  Grillstraße 123
-                  <br />
-                  10115 Berlin
-                  <br />
-                  Deutschland
+                  {contactData.address.lines.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                 </p>
               </div>
             </div>
 
+            {/* Socials */}
             <div className="pt-6">
               <h4 className="font-semibold mb-4">Folgen Sie uns</h4>
               <div className="flex gap-4">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-orange-100 p-2 rounded-full hover:bg-orange-200 transition-colors"
-                >
-                  <Facebook className="w-5 h-5 text-orange-600" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-orange-100 p-2 rounded-full hover:bg-orange-200 transition-colors"
-                >
-                  <Instagram className="w-5 h-5 text-orange-600" />
-                </a>
+                {contactData.socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-orange-100 p-2 rounded-full hover:bg-orange-200 transition-colors"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="border-t mt-12 pt-8 text-center text-gray-500">
-          <p>
-            © {new Date().getFullYear()} Michas Grillshülle. Alle Rechte
-            vorbehalten.
-          </p>
+          <p>{contactData.copyright}</p>
         </div>
       </div>
     </footer>

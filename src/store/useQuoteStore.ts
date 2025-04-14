@@ -39,9 +39,12 @@ export const useQuoteStore = create<QuoteStore>((set, get) => ({
   },
   updateQuantity: (itemId, quantity) => {
     set((state) => ({
-      items: state.items.map((item) =>
-        item.id === itemId ? { ...item, quantity } : item
-      ),
+      items:
+        quantity === 0
+          ? state.items.filter((item) => item.id !== itemId)
+          : state.items.map((item) =>
+              item.id === itemId ? { ...item, quantity } : item
+            ),
     }));
   },
   setPeopleCount: (count) => {

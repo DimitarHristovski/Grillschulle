@@ -1,4 +1,13 @@
-import { Flame, ChefHat, Code } from "lucide-react";
+import {
+  Flame,
+  ChefHat,
+  Code,
+  Facebook,
+  Instagram,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 export interface MeatItem {
   id: string;
@@ -27,14 +36,14 @@ export const meatItems: MeatItem[] = [
     price: 29.99,
     image:
       "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    description: "Perfectly marbled, premium cut ribeye",
+    description: "Perfekt marmoriertes Premium-Ribeye",
     details: {
-      origin: "Black Angus cattle from premium farms",
-      weight: "300g per portion",
+      origin: "Black Angus Rinder von Premium-Farmen",
+      weight: "300g pro Portion",
       preparation:
-        "Dry-aged for 28 days, seasoned with our signature spice blend",
-      servingTemp: "Served medium-rare unless specified otherwise",
-      pairings: ["Grilled vegetables", "Roasted potatoes", "Red wine sauce"],
+        "28 Tage trocken gereift, gewürzt mit unserer Gewürzmischung",
+      servingTemp: "Serviert medium-rare, sofern nicht anders gewünscht",
+      pairings: ["Gegrilltes Gemüse", "Ofenkartoffeln", "Rotweinsauce"],
       nutritionalInfo: {
         protein: "56g",
         fat: "42g",
@@ -48,13 +57,13 @@ export const meatItems: MeatItem[] = [
     price: 24.99,
     image:
       "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    description: "Tender, fall-off-the-bone pork ribs",
+    description: "Zarte, vom Knochen fallende Schweinerippchen",
     details: {
-      origin: "Premium pork from selected farms",
-      weight: "500g per portion",
-      preparation: "Slow-smoked for 6 hours with hickory wood",
-      servingTemp: "Served hot with BBQ sauce",
-      pairings: ["Coleslaw", "Corn on the cob", "Mac and cheese"],
+      origin: "Premium-Schweinefleisch von ausgewählten Farmen",
+      weight: "500g pro Portion",
+      preparation: "6 Stunden langsam geräuchert mit Hickoryholz",
+      servingTemp: "Heiß serviert mit BBQ-Sauce",
+      pairings: ["Krautsalat", "Maiskolben", "Mac and Cheese"],
       nutritionalInfo: {
         protein: "45g",
         fat: "38g",
@@ -63,18 +72,18 @@ export const meatItems: MeatItem[] = [
     },
   },
   {
-    id: "lamb-chops",
-    name: "Lamb Chops",
+    id: "Lammkoteletts",
+    name: "Lammkoteletts",
     price: 27.99,
     image:
       "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    description: "Premium New Zealand lamb chops",
+    description: "Premium Lammkoteletts aus Neuseeland",
     details: {
-      origin: "New Zealand grass-fed lamb",
-      weight: "250g per portion",
-      preparation: "Marinated in herbs and garlic, grilled to perfection",
-      servingTemp: "Served medium with mint sauce",
-      pairings: ["Roasted vegetables", "Mint sauce", "Greek salad"],
+      origin: "Weide-Lamm aus Neuseeland",
+      weight: "250g pro Portion",
+      preparation: "In Kräutern und Knoblauch mariniert, perfekt gegrillt",
+      servingTemp: "Medium serviert mit Minzsauce",
+      pairings: ["Geröstetes Gemüse", "Minzsauce", "Griechischer Salat"],
       nutritionalInfo: {
         protein: "42g",
         fat: "32g",
@@ -83,18 +92,18 @@ export const meatItems: MeatItem[] = [
     },
   },
   {
-    id: "bbq-chicken-wings",
-    name: "BBQ Chicken Wings",
+    id: "BBQ Hähnchenflügel",
+    name: "BBQ Hähnchenflügel",
     price: 15.99,
     image:
       "https://images.unsplash.com/photo-1527477396000-e27163b481c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    description: "Smoky, crispy chicken wings",
+    description: "Rauchige, knusprige Hähnchenflügel",
     details: {
-      origin: "Free-range chicken",
-      weight: "400g per portion (8-10 pieces)",
-      preparation: "Marinated for 24 hours, smoked and grilled",
-      servingTemp: "Served hot with choice of sauce",
-      pairings: ["Blue cheese dip", "Celery sticks", "Ranch dressing"],
+      origin: "Freilandhuhn",
+      weight: "400g pro Portion (8–10 Stück)",
+      preparation: "24 Stunden mariniert, geräuchert und gegrillt",
+      servingTemp: "Heiß serviert mit Sauce nach Wahl",
+      pairings: ["Blauschimmelkäse-Dip", "Selleriestangen", "Ranch-Dressing"],
       nutritionalInfo: {
         protein: "38g",
         fat: "28g",
@@ -108,13 +117,13 @@ export const meatItems: MeatItem[] = [
     price: 22.99,
     image:
       "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    description: "Slow-smoked premium beef brisket",
+    description: "Langsam geräuchertes Premium-Rinderbruststück",
     details: {
-      origin: "Premium beef from selected farms",
-      weight: "350g per portion",
-      preparation: "Smoked for 12 hours with oak wood",
-      servingTemp: "Served hot with BBQ sauce",
-      pairings: ["Baked beans", "Potato salad", "Pickled vegetables"],
+      origin: "Premium-Rindfleisch von ausgewählten Farmen",
+      weight: "350g pro Portion",
+      preparation: "12 Stunden mit Eichenholz geräuchert",
+      servingTemp: "Heiß serviert mit BBQ-Sauce",
+      pairings: ["Baked Beans", "Kartoffelsalat", "Eingelegtes Gemüse"],
       nutritionalInfo: {
         protein: "48g",
         fat: "36g",
@@ -123,18 +132,18 @@ export const meatItems: MeatItem[] = [
     },
   },
   {
-    id: "premium-sausages",
-    name: "Premium Sausages",
+    id: "Premium Würstchen",
+    name: "Premium Würstchen",
     price: 14.99,
     image:
       "https://images.unsplash.com/photo-1597733336794-12d05021d510?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    description: "Artisanal mixed sausage selection",
+    description: "Handgemachte Auswahl an Mischwürstchen",
     details: {
-      origin: "Handcrafted using premium cuts",
-      weight: "300g per portion (4-5 pieces)",
-      preparation: "Grilled to perfection",
-      servingTemp: "Served hot with mustard",
-      pairings: ["Sauerkraut", "Grilled onions", "Mustard selection"],
+      origin: "Handgefertigt aus hochwertigen Fleischstücken",
+      weight: "300g pro Portion (4–5 Stück)",
+      preparation: "Perfekt gegrillt",
+      servingTemp: "Heiß serviert mit Senf",
+      pairings: ["Sauerkraut", "Gegrillte Zwiebeln", "Senfauswahl"],
       nutritionalInfo: {
         protein: "32g",
         fat: "28g",
@@ -163,20 +172,47 @@ export const team: Team[] = [
   },
   {
     name: "Anas",
-    role: "Chefköchin",
+    role: "Chefköch",
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
     icon: <ChefHat className="h-6 w-6 text-orange-500" />,
     description:
       "Anas kreiert einzigartige Marinaden und sorgt dafür, dass jedes Gericht ein kulinarisches Erlebnis wird. Sein Kreativität macht unser Grillangebot besonders.",
   },
-  {
-    name: "Dimitar.",
-    role: "Web Entwickler",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
-    icon: <Code className="h-6 w-6 text-orange-500" />,
-    description:
-      "Dimitar ist verantwortlich für die Entwicklung dieser Plattform. Mit Fokus auf Benutzerfreundlichkeit sorgt er dafür, dass Ihr Grill-Erlebnis bereits beim Buchen beginnt.",
-  },
 ];
+
+export const contactData = {
+  title: "Kontakt & Standort",
+  description:
+    "Besuchen Sie uns in unserem Hauptquartier oder kontaktieren Sie uns für weitere Informationen über unseren BBQ-Service.",
+  phone: {
+    label: "Telefon",
+    value: "+49 162 7468061",
+    href: "tel:+491234567890",
+    icon: <Phone className="w-5 h-5 text-orange-600" />,
+  },
+  email: {
+    label: "Email",
+    value: "info@grillshulle.de",
+    href: "mailto:info@grillshulle.de",
+    icon: <Mail className="w-5 h-5 text-orange-600" />,
+  },
+  address: {
+    label: "Adresse",
+    lines: ["Heuweg 7", "33181 Bad Wünnenberg", "NRW Deutschland"],
+    icon: <MapPin className="w-5 h-5 text-orange-600" />,
+  },
+  socials: [
+    {
+      name: "Facebook",
+      url: "https://facebook.com",
+      icon: <Facebook className="w-5 h-5 text-orange-600" />,
+    },
+    {
+      name: "Instagram",
+      url: "https://instagram.com",
+      icon: <Instagram className="w-5 h-5 text-orange-600" />,
+    },
+  ],
+  copyright: `© ${new Date().getFullYear()} Michas Grillshülle. Alle Rechte vorbehalten.`,
+};
