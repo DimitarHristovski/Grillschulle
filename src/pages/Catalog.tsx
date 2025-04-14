@@ -153,7 +153,7 @@ export default function Catalog() {
                         addItem(item);
                       }}
                     >
-                      Zum Angebot
+                      In den Warenkorb{" "}
                     </button>
                   </div>
                 </div>

@@ -54,7 +54,7 @@ export default function PriceCalculator() {
             ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
         }}
       >
-        Angebot Anfordern
+        Warenkorb{" "}
       </button>
     </div>
   );

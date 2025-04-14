@@ -42,7 +42,7 @@ export default function Navbar() {
                   ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
               }}
             >
-              Angebot Anfordern
+              Warenkorb{" "}
             </button>
           </div>
         </div>

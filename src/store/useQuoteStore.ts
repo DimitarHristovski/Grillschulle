@@ -14,6 +14,9 @@ interface QuoteStore {
   setPeopleCount: (count: number) => void;
   clearQuote: () => void;
   getTotalPrice: () => number;
+  getOriginalPrice: () => number;
+  getDiscountedPrice: () => number;
+  getSavedAmount: () => number;
 }
 
 export const useQuoteStore = create<QuoteStore>((set, get) => ({
@@ -52,6 +55,27 @@ export const useQuoteStore = create<QuoteStore>((set, get) => ({
   },
   clearQuote: () => {
     set({ items: [], peopleCount: 15 });
+  },
+  getOriginalPrice: () => {
+    const { items } = get();
+    return items.reduce((total, item) => total + item.price * item.quantity, 0);
+  },
+
+  getDiscountedPrice: () => {
+    const { getOriginalPrice, peopleCount } = get();
+    const originalPrice = getOriginalPrice();
+
+    let discount = 1;
+    if (peopleCount >= 30) discount = 0.85;
+    else if (peopleCount >= 20) discount = 0.9;
+    else if (peopleCount >= 10) discount = 0.95;
+
+    return originalPrice * discount;
+  },
+
+  getSavedAmount: () => {
+    const { getOriginalPrice, getDiscountedPrice } = get();
+    return getOriginalPrice() - getDiscountedPrice();
   },
   getTotalPrice: () => {
     const { items, peopleCount } = get();

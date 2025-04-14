@@ -121,7 +121,7 @@ export default function MeatDetails() {
             onClick={() => addItem(item)}
             className="w-full mt-8 bg-orange-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
           >
-            Zum Angebot Hinzufügen
+            In den Warenkorb{" "}
           </button>
         </div>
       </div>

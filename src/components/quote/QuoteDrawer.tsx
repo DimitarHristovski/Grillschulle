@@ -35,6 +35,9 @@ export default function QuoteDrawer() {
     getTotalPrice,
     peopleCount,
     clearQuote,
+    getOriginalPrice,
+    getDiscountedPrice,
+    getSavedAmount,
   } = useQuoteStore();
   const quoteData = {
     customerInfo: { name, email, phone },
@@ -43,7 +46,7 @@ export default function QuoteDrawer() {
     date,
     totalPrice: getTotalPrice(),
   };
-
+  console.log(quoteData);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const generatedDate = new Date().toLocaleDateString("de-DE", {
@@ -55,7 +58,7 @@ export default function QuoteDrawer() {
     // Generate PDF
     const doc = new jsPDF();
     doc.setFontSize(18);
-    doc.text("Angebot", 14, 22);
+    doc.text("Warenkorb", 14, 22);
 
     doc.setFontSize(12);
     doc.text(`Name: ${name}`, 14, 32);
@@ -66,19 +69,23 @@ export default function QuoteDrawer() {
 
     autoTable(doc, {
       startY: 74,
-      head: [["Produkt", "Anzahl", "Preis"]],
+      head: [["Produkt", "Anzahl", "Original Preis", "Sie sparen"]],
       body: items.map((item) => [
         item.name,
-        item.quantity,
-        `€${item.price.toFixed(2)}`,
+        item.quantity.toString(),
+        `€${(item.quantity * item.price).toFixed(2)}`,
+        ` €${getSavedAmount().toFixed(2)}`,
       ]),
     });
 
     const finalY = doc.lastAutoTable.finalY || 100;
+
     doc.setFontSize(14);
     doc.text(`Gesamtpreis: €${getTotalPrice().toFixed(2)}`, 14, finalY + 10);
 
-    doc.save(`angebot-${name || "kunde"}.pdf`);
+    //doc.text(`Sie sparen: €${getSavedAmount().toFixed(2)}`, 14, finalY + 30);
+
+    doc.save(`Warenkorb-${name || "kunde"}.pdf`);
 
     // Show confirmation
     setShowConfirmation(true);
@@ -281,7 +288,7 @@ export default function QuoteDrawer() {
                           type="submit"
                           className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
                         >
-                          Angebot Anfragen
+                          Berechnen{" "}
                         </button>
                       </div>
                     </form>
