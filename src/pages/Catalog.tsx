@@ -1,24 +1,29 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, SlidersHorizontal, X } from 'lucide-react';
-import { meatItems } from '../data/meatItems';
-import { useQuoteStore } from '../store/useQuoteStore';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Search, SlidersHorizontal, X } from "lucide-react";
+import { meatItems } from "../data/Data";
+import { useQuoteStore } from "../store/useQuoteStore";
 
 export default function Catalog() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 50]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const addItem = useQuoteStore((state) => state.addItem);
 
-  const categories = ['Beef', 'Pork', 'Lamb', 'Chicken', 'Sausages'];
+  const categories = ["Beef", "Pork", "Lamb", "Chicken", "Sausages"];
 
-  const filteredItems = meatItems.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPrice = item.price >= priceRange[0] && item.price <= priceRange[1];
-    const matchesCategory = selectedCategories.length === 0 || 
-                           selectedCategories.some(cat => item.name.toLowerCase().includes(cat.toLowerCase()));
+  const filteredItems = meatItems.filter((item) => {
+    const matchesSearch =
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesPrice =
+      item.price >= priceRange[0] && item.price <= priceRange[1];
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.some((cat) =>
+        item.name.toLowerCase().includes(cat.toLowerCase())
+      );
     return matchesSearch && matchesPrice && matchesCategory;
   });
 
@@ -48,20 +53,28 @@ export default function Catalog() {
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              
+
               <div className="space-y-6">
                 <div>
                   <h4 className="font-medium mb-3">Kategorien</h4>
-                  {categories.map(category => (
-                    <label key={category} className="flex items-center gap-2 mb-3 cursor-pointer">
+                  {categories.map((category) => (
+                    <label
+                      key={category}
+                      className="flex items-center gap-2 mb-3 cursor-pointer"
+                    >
                       <input
                         type="checkbox"
                         checked={selectedCategories.includes(category)}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            setSelectedCategories([...selectedCategories, category]);
+                            setSelectedCategories([
+                              ...selectedCategories,
+                              category,
+                            ]);
                           } else {
-                            setSelectedCategories(selectedCategories.filter(c => c !== category));
+                            setSelectedCategories(
+                              selectedCategories.filter((c) => c !== category)
+                            );
                           }
                         }}
                         className="rounded text-orange-500 focus:ring-orange-500"
@@ -70,7 +83,7 @@ export default function Catalog() {
                     </label>
                   ))}
                 </div>
-                
+
                 <div>
                   <h4 className="font-medium mb-3">Preisbereich</h4>
                   <div className="space-y-3">
@@ -79,7 +92,9 @@ export default function Catalog() {
                       min="0"
                       max="50"
                       value={priceRange[1]}
-                      onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+                      onChange={(e) =>
+                        setPriceRange([priceRange[0], Number(e.target.value)])
+                      }
                       className="w-full h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
                     />
                     <div className="flex justify-between text-sm text-gray-600">
@@ -112,13 +127,13 @@ export default function Catalog() {
           {/* Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item) => (
-              <div 
+              <div
                 key={item.id}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <Link to={`/catalog/${item.id}`}>
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.name}
                     className="w-full h-48 object-cover"
                   />
@@ -129,8 +144,10 @@ export default function Catalog() {
                     <p className="text-gray-600 mb-4">{item.description}</p>
                   </Link>
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-orange-600">€{item.price}</span>
-                    <button 
+                    <span className="text-2xl font-bold text-orange-600">
+                      €{item.price}
+                    </span>
+                    <button
                       className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
                       onClick={() => {
                         addItem(item);

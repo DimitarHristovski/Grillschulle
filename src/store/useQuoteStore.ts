@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { MeatItem } from '../data/meatItems';
+import { create } from "zustand";
+import { MeatItem } from "../data/Data";
 
 interface QuoteItem extends MeatItem {
   quantity: number;
@@ -56,13 +56,13 @@ export const useQuoteStore = create<QuoteStore>((set, get) => ({
       (total, item) => total + item.price * item.quantity,
       0
     );
-    
+
     // Apply group discount
     let discount = 1;
     if (peopleCount >= 30) discount = 0.85;
     else if (peopleCount >= 20) discount = 0.9;
     else if (peopleCount >= 10) discount = 0.95;
-    
+
     return basePrice * discount;
   },
 }));
