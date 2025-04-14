@@ -77,6 +77,12 @@ export default function QuoteDrawer() {
         ` €${getSavedAmount().toFixed(2)}`,
       ]),
     });
+    const blob = doc.output("blob");
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "kalkulation.pdf";
+    link.click();
 
     const finalY = doc.lastAutoTable.finalY || 100;
 
