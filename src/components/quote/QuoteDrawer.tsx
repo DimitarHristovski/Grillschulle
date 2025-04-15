@@ -81,12 +81,12 @@ export default function QuoteDrawer() {
     doc.setFontSize(14);
     doc.text(`Gesamtpreis: €${getTotalPrice().toFixed(2)}`, 14, finalY + 10);
 
-    // doc.save(`Warenkorb-${name || "kunde"}.pdf`);
+    //doc.save(`Warenkorb-${name || "kunde"}.pdf`);
     const blob = doc.output("blob");
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `Warenkorb-${name || "kunde"}.pdf`;
+    link.download = "Warenkorb.pdf";
     link.click();
 
     // Show confirmation
