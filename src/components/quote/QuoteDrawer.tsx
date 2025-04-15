@@ -25,6 +25,7 @@ export default function QuoteDrawer() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   const [showConfirmation, setShowConfirmation] = useState(false);
   const {
@@ -83,14 +84,16 @@ export default function QuoteDrawer() {
 
     //doc.save(`Warenkorb-${name || "kunde"}.pdf`);
     const blob = doc.output("blob");
-    const url = URL.createObjectURL(blob);
+    const generatedUrl = URL.createObjectURL(blob);
+    setPdfUrl(generatedUrl);
+
     const link = document.createElement("a");
-    link.href = url;
-    link.download = `Warenkorb-${date || "kunde"}.pdf`;
-    document.body.appendChild(link); // required for Firefox
+    link.href = generatedUrl;
+    link.download = `Warenkorb-${name || "kunde"}.pdf`;
+    document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url); // clean up
+    URL.revokeObjectURL(generatedUrl);
 
     // Show confirmation
     setShowConfirmation(true);
@@ -102,7 +105,7 @@ export default function QuoteDrawer() {
       setName("");
       setEmail("");
       setShowConfirmation(false);
-    }, 5000);
+    }, 60000);
   };
   return (
     <>
@@ -137,6 +140,18 @@ export default function QuoteDrawer() {
                     <br />
                     Bei Fragen stehen wir Ihnen gerne zur Verfügung.
                   </p>
+                  {pdfUrl && (
+                    <p className="text-sm mt-4">
+                      Falls die PDF nicht automatisch heruntergeladen wurde,{" "}
+                      <a
+                        href={pdfUrl}
+                        download={`Warenkorb-${date || "kunde"}.pdf`}
+                        className="text-orange-600 underline"
+                      >
+                        klicken Sie hier
+                      </a>
+                    </p>
+                  )}
 
                   <div className="bg-gray-50 p-4 rounded-lg w-full mb-6">
                     <h3 className="font-semibold mb-2">
