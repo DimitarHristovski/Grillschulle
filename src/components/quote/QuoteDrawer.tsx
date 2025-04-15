@@ -53,6 +53,7 @@ export default function QuoteDrawer() {
       year: "numeric",
       month: "long",
       day: "numeric",
+      hour: "numeric",
     });
 
     // Generate PDF
@@ -92,7 +93,7 @@ export default function QuoteDrawer() {
     // Create and trigger download
     const link = document.createElement("a");
     link.href = generatedUrl;
-    link.download = `Warenkorb-${name || "kunde"}.pdf`;
+    link.download = `Warenkorb-${generatedDate}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -147,18 +148,6 @@ export default function QuoteDrawer() {
                     <br />
                     Bei Fragen stehen wir Ihnen gerne zur Verfügung.
                   </p>
-                  {pdfUrl && (
-                    <p className="text-sm mt-4">
-                      Falls die PDF nicht automatisch heruntergeladen wurde,{" "}
-                      <a
-                        href={pdfUrl}
-                        download={`Warenkorb-${date}.pdf`}
-                        className="text-orange-600 underline"
-                      >
-                        klicken Sie hier
-                      </a>
-                    </p>
-                  )}
 
                   <div className="bg-gray-50 p-4 rounded-lg w-full mb-6">
                     <h3 className="font-semibold mb-2">
