@@ -40,7 +40,7 @@ export default function QuoteDrawer() {
     getSavedAmount,
   } = useQuoteStore();
   const quoteData = {
-    customerInfo: { name, email },
+    customerInfo: { name, email, date },
     items,
     peopleCount,
     date,
@@ -87,31 +87,25 @@ export default function QuoteDrawer() {
     const blob = doc.output("blob");
     const generatedUrl = URL.createObjectURL(blob);
 
-    // Save for fallback link
-    setPdfUrl(generatedUrl);
-
-    // Create and trigger download
     const link = document.createElement("a");
     link.href = generatedUrl;
     link.download = `Warenkorb-${generatedDate}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    // Delay revocation to avoid "check internet" errors
+    setPdfUrl(generatedUrl);
     setTimeout(() => {
       URL.revokeObjectURL(generatedUrl);
-    }, 3000); // gives browser time to download
+    }, 3000);
 
-    // Show confirmation
     setShowConfirmation(true);
 
-    // Reset after 45 seconds
     setTimeout(() => {
       clearQuote();
       setIsOpen(false);
       setName("");
       setEmail("");
+      setDate("");
       setShowConfirmation(false);
     }, 60000);
   };
@@ -148,7 +142,18 @@ export default function QuoteDrawer() {
                     <br />
                     Bei Fragen stehen wir Ihnen gerne zur Verfügung.
                   </p>
-
+                  {/*    {pdfUrl && (
+                    <a
+                      href={pdfUrl}
+                      download={`Warenkorb${date}.pdf`}
+                      className="mt-4 text-orange-600 underline text-sm block text-center"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      📄 PDF manuell herunterladen
+                    </a>
+                  )}
+             */}
                   <div className="bg-gray-50 p-4 rounded-lg w-full mb-6">
                     <h3 className="font-semibold mb-2">
                       Ihre Essensbestellung Cost:
