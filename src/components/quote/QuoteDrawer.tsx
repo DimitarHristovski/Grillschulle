@@ -85,15 +85,22 @@ export default function QuoteDrawer() {
     //doc.save(`Warenkorb-${name || "kunde"}.pdf`);
     const blob = doc.output("blob");
     const generatedUrl = URL.createObjectURL(blob);
+
+    // Save for fallback link
     setPdfUrl(generatedUrl);
 
+    // Create and trigger download
     const link = document.createElement("a");
     link.href = generatedUrl;
     link.download = `Warenkorb-${name || "kunde"}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(generatedUrl);
+
+    // Delay revocation to avoid "check internet" errors
+    setTimeout(() => {
+      URL.revokeObjectURL(generatedUrl);
+    }, 3000); // gives browser time to download
 
     // Show confirmation
     setShowConfirmation(true);
@@ -145,7 +152,7 @@ export default function QuoteDrawer() {
                       Falls die PDF nicht automatisch heruntergeladen wurde,{" "}
                       <a
                         href={pdfUrl}
-                        download={`Warenkorb-${date || "kunde"}.pdf`}
+                        download={`Warenkorb-${date}.pdf`}
                         className="text-orange-600 underline"
                       >
                         klicken Sie hier
