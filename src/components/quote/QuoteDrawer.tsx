@@ -35,8 +35,7 @@ export default function QuoteDrawer() {
     getTotalPrice,
     peopleCount,
     clearQuote,
-    getOriginalPrice,
-    getDiscountedPrice,
+
     getSavedAmount,
   } = useQuoteStore();
   const quoteData = {
