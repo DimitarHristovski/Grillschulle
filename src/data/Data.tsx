@@ -168,7 +168,7 @@ export const team: Team[] = [
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
     icon: <Flame className="h-6 w-6 text-orange-500" />,
     description:
-      "Mit über 15 Jahren Erfahrung bringt Micha Leidenschaft und Geschmack auf den Grill. Er gründete Michas Grillshülle mit dem Ziel, beste Qualität und herzlichen Service zu bieten.",
+      "Mit über 15 Jahren Erfahrung bringt Michael Leidenschaft und Geschmack auf den Grill. Er gründete Michael Grillshülle mit dem Ziel, beste Qualität und herzlichen Service zu bieten.",
   },
   {
     name: "Anas",
@@ -214,7 +214,7 @@ export const contactData = {
       icon: <Instagram className="w-5 h-5 text-orange-600" />,
     },
   ],
-  copyright: `© ${new Date().getFullYear()} Michas Grillshülle. Alle Rechte vorbehalten.`,
+  copyright: `© ${new Date().getFullYear()} Michael Grillshülle. Alle Rechte vorbehalten.`,
 };
 export const priceCalculatorData = {
   label0: "  Preisrechner",
@@ -228,7 +228,7 @@ export const priceCalculatorData = {
   label7: "Warenkorb",
 };
 export const navbarLabels = {
-  brand: "Michas Grillshülle",
+  brand: "Michael Grillshülle",
   navLinks: {
     home: "Home",
     catalog: "Fleischauswahl",
