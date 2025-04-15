@@ -24,7 +24,6 @@ export default function QuoteDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
 
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -40,7 +39,7 @@ export default function QuoteDrawer() {
     getSavedAmount,
   } = useQuoteStore();
   const quoteData = {
-    customerInfo: { name, email, phone },
+    customerInfo: { name, email },
     items,
     peopleCount,
     date,
@@ -63,12 +62,11 @@ export default function QuoteDrawer() {
     doc.setFontSize(12);
     doc.text(`Name: ${name}`, 14, 32);
     doc.text(`Email: ${email}`, 14, 40);
-    doc.text(`Telefon: ${phone}`, 14, 48);
-    doc.text(`Anzahl der Personen: ${peopleCount}`, 14, 56);
-    doc.text(`Erstellungsdatum: ${generatedDate}`, 14, 64);
+    doc.text(`Anzahl der Personen: ${peopleCount}`, 14, 48);
+    doc.text(`Erstellungsdatum: ${generatedDate}`, 14, 56);
 
     autoTable(doc, {
-      startY: 74,
+      startY: 64,
       head: [["Produkt", "Anzahl", "Original Preis", "Sie sparen"]],
       body: items.map((item) => [
         item.name,
@@ -83,9 +81,13 @@ export default function QuoteDrawer() {
     doc.setFontSize(14);
     doc.text(`Gesamtpreis: €${getTotalPrice().toFixed(2)}`, 14, finalY + 10);
 
-    //doc.text(`Sie sparen: €${getSavedAmount().toFixed(2)}`, 14, finalY + 30);
-
-    doc.save(`Warenkorb-${name || "kunde"}.pdf`);
+    // doc.save(`Warenkorb-${name || "kunde"}.pdf`);
+    const blob = doc.output("blob");
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `Warenkorb-${name || "kunde"}.pdf`;
+    link.click();
 
     // Show confirmation
     setShowConfirmation(true);
@@ -96,9 +98,8 @@ export default function QuoteDrawer() {
       setIsOpen(false);
       setName("");
       setEmail("");
-      setPhone("");
       setShowConfirmation(false);
-    }, 45000);
+    }, 5000);
   };
   return (
     <>
@@ -262,19 +263,6 @@ export default function QuoteDrawer() {
                               required
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Telefon
-                            </label>
-                            <input
-                              type="tel"
-                              required
-                              value={phone}
-                              onChange={(e) => setPhone(e.target.value)}
                               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
                             />
                           </div>
