@@ -84,11 +84,13 @@ export default function QuoteDrawer() {
     //doc.save(`Warenkorb-${name || "kunde"}.pdf`);
     const blob = doc.output("blob");
     const url = URL.createObjectURL(blob);
-    window.open(url);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "Warenkorb.pdf";
+    link.download = `Warenkorb-${date || "kunde"}.pdf`;
+    document.body.appendChild(link); // required for Firefox
     link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url); // clean up
 
     // Show confirmation
     setShowConfirmation(true);
