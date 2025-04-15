@@ -107,11 +107,10 @@ export default function QuoteDrawer() {
       setEmail("");
       setDate("");
       setShowConfirmation(false);
-    }, 60000);
+    }, 10000);
   };
   return (
     <>
-      {/* Quote Button */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-colors z-50"
@@ -124,7 +123,6 @@ export default function QuoteDrawer() {
         )}
       </button>
 
-      {/* Drawer */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="absolute right-0 top-0 h-full w-full md:w-96 bg-white shadow-xl">

@@ -66,7 +66,8 @@ export const useQuoteStore = create<QuoteStore>((set, get) => ({
     const originalPrice = getOriginalPrice();
 
     let discount = 1;
-    if (peopleCount >= 30) discount = 0.85;
+    if (peopleCount >= 40) discount = 0.75;
+    else if (peopleCount >= 30) discount = 0.85;
     else if (peopleCount >= 20) discount = 0.9;
     else if (peopleCount >= 10) discount = 0.95;
 
@@ -84,9 +85,9 @@ export const useQuoteStore = create<QuoteStore>((set, get) => ({
       0
     );
 
-    // Apply group discount
     let discount = 1;
-    if (peopleCount >= 30) discount = 0.85;
+    if (peopleCount >= 40) discount = 0.75;
+    else if (peopleCount >= 30) discount = 0.85;
     else if (peopleCount >= 20) discount = 0.9;
     else if (peopleCount >= 10) discount = 0.95;
 

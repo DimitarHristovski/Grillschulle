@@ -3,16 +3,23 @@ import { Calculator } from "lucide-react";
 import { useQuoteStore } from "../../store/useQuoteStore";
 
 export default function PriceCalculator() {
-  const { setPeopleCount, peopleCount } = useQuoteStore();
+  const { peopleCount, setPeopleCount } = useQuoteStore();
+  const [basePricePerPerson, setBasePricePerPerson] = useState(1);
 
-  const calculatePrice = (count: number) => {
-    if (count <= 5) return 20;
-    if (count <= 15) return 15;
-    return 12;
+  const calculateDiscountedPrice = (count: number) => {
+    if (count >= 40) return basePricePerPerson * 0.75;
+    if (count >= 30) return basePricePerPerson * 0.85;
+    if (count >= 20) return basePricePerPerson * 0.9;
+    if (count >= 10) return basePricePerPerson * 0.95;
+    return basePricePerPerson;
   };
 
-  const pricePerPerson = calculatePrice(peopleCount);
-  const totalPrice = peopleCount * pricePerPerson;
+  const pricePerPerson = calculateDiscountedPrice(peopleCount);
+  const totalPrice = pricePerPerson * peopleCount;
+
+  const savingsPercent = Math.round(
+    ((basePricePerPerson - pricePerPerson) / basePricePerPerson) * 100
+  );
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
@@ -20,13 +27,15 @@ export default function PriceCalculator() {
         <Calculator className="w-6 h-6 text-orange-500" />
         <h3 className="text-xl font-bold">Preisrechner</h3>
       </div>
+
+      {/* Personen input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Anzahl der Personen
         </label>
         <input
           type="range"
-          min="5"
+          min="1"
           max="50"
           value={peopleCount}
           onChange={(e) => setPeopleCount(Number(e.target.value))}
@@ -36,16 +45,46 @@ export default function PriceCalculator() {
           {peopleCount} Personen
         </div>
       </div>
+
+      {/* 👇 Base Price Input */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Basispreis pro Person (€)
+        </label>
+        <input
+          type="number"
+          min={0.01}
+          step={0.01}
+          value={basePricePerPerson}
+          onChange={(e) => setBasePricePerPerson(Number(e.target.value))}
+          className="w-full px-4 py-2 border rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500"
+        />
+      </div>
+
       <div className="space-y-4">
         <div className="flex justify-between items-center border-b pb-2">
           <span>Preis pro Person:</span>
-          <span className="font-semibold">€{pricePerPerson}</span>
+          <span className="font-semibold">
+            <span className="line-through text-gray-400 mr-1">
+              €{basePricePerPerson.toFixed(2)}
+            </span>
+            <span className="text-green-700">€{pricePerPerson.toFixed(2)}</span>
+          </span>
         </div>
-        <div className="flex justify-between items-center text-lg font-bold">
+
+        {savingsPercent > 0 && (
+          <div className="flex justify-between items-center  pb-2 text-green-600 font-semibold">
+            <span>Rabattvorteil:</span>
+            <span>{savingsPercent}% günstiger</span>
+          </div>
+        )}
+
+        {/*<div className="flex justify-between items-center text-lg font-bold">
           <span>Gesamtpreis:</span>
-          <span className="text-orange-600">€{totalPrice}</span>
-        </div>
+          <span className="text-orange-600">€{pricePerPerson.toFixed(2)}</span>
+        </div>*/}
       </div>
+
       <button
         className="w-full mt-6 bg-orange-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
         onClick={() => {
@@ -54,7 +93,7 @@ export default function PriceCalculator() {
             ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
         }}
       >
-        Warenkorb{" "}
+        Warenkorb
       </button>
     </div>
   );
