@@ -1,5 +1,5 @@
 import { MapContainer } from "../map/MapContainer";
-import { contactData } from "../../data/Data"; // Adjust the import path as needed
+import { contactData } from "../../data/Data";
 
 export default function Footer() {
   return (

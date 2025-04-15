@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Calculator } from "lucide-react";
 import { useQuoteStore } from "../../store/useQuoteStore";
+import { priceCalculatorData } from "../../data/Data";
 
 export default function PriceCalculator() {
   const { peopleCount, setPeopleCount } = useQuoteStore();
@@ -25,31 +26,29 @@ export default function PriceCalculator() {
     <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
       <div className="flex items-center gap-2 mb-4">
         <Calculator className="w-6 h-6 text-orange-500" />
-        <h3 className="text-xl font-bold">Preisrechner</h3>
+        <h3 className="text-xl font-bold">{priceCalculatorData.label0}</h3>
       </div>
 
-      {/* Personen input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Anzahl der Personen
+          {priceCalculatorData.label1}
         </label>
         <input
           type="range"
-          min="1"
+          min="10"
           max="50"
           value={peopleCount}
           onChange={(e) => setPeopleCount(Number(e.target.value))}
           className="w-full h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
         />
         <div className="text-center mt-2 text-2xl font-bold text-orange-600">
-          {peopleCount} Personen
+          {peopleCount} {priceCalculatorData.label2}
         </div>
       </div>
 
-      {/* 👇 Base Price Input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Basispreis pro Person (€)
+          {priceCalculatorData.label3} (€)
         </label>
         <input
           type="number"
@@ -63,7 +62,7 @@ export default function PriceCalculator() {
 
       <div className="space-y-4">
         <div className="flex justify-between items-center border-b pb-2">
-          <span>Preis pro Person:</span>
+          <span>{priceCalculatorData.label4}</span>
           <span className="font-semibold">
             <span className="line-through text-gray-400 mr-1">
               €{basePricePerPerson.toFixed(2)}
@@ -74,8 +73,10 @@ export default function PriceCalculator() {
 
         {savingsPercent > 0 && (
           <div className="flex justify-between items-center  pb-2 text-green-600 font-semibold">
-            <span>Rabattvorteil:</span>
-            <span>{savingsPercent}% günstiger</span>
+            <span>{priceCalculatorData.label5}</span>
+            <span>
+              {savingsPercent}% {priceCalculatorData.label6}
+            </span>
           </div>
         )}
 
@@ -93,7 +94,7 @@ export default function PriceCalculator() {
             ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
         }}
       >
-        Warenkorb
+        {priceCalculatorData.label7}
       </button>
     </div>
   );

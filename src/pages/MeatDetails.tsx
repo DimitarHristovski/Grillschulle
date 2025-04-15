@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Star, Clock, UtensilsCrossed, Scale } from "lucide-react";
-import { meatItems } from "../data/Data";
+import { meatItems, meatDetailsLabels } from "../data/Data";
 import { useQuoteStore } from "../store/useQuoteStore";
 
 export default function MeatDetails() {
@@ -11,9 +11,11 @@ export default function MeatDetails() {
   if (!item) {
     return (
       <div className="pt-24 container mx-auto px-6">
-        <h2 className="text-2xl font-bold">Produkt nicht gefunden</h2>
+        <h2 className="text-2xl font-bold">
+          {meatDetailsLabels.notFound.title}
+        </h2>
         <Link to="/catalog" className="text-orange-500 hover:text-orange-600">
-          Zurück zur Übersicht
+          {meatDetailsLabels.notFound.back}{" "}
         </Link>
       </div>
     );
@@ -26,7 +28,7 @@ export default function MeatDetails() {
         className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 mb-8"
       >
         <ArrowLeft className="w-5 h-5" />
-        Zurück zur Übersicht
+        {meatDetailsLabels.backToCatalog}{" "}
       </Link>
 
       <div className="grid md:grid-cols-2 gap-12">
@@ -40,7 +42,9 @@ export default function MeatDetails() {
           <div className="mt-8 grid grid-cols-3 gap-4">
             <div className="bg-orange-50 p-4 rounded-lg text-center">
               <Star className="w-6 h-6 text-orange-500 mx-auto mb-2" />
-              <p className="text-sm text-gray-600">Premium Qualität</p>
+              <p className="text-sm text-gray-600">
+                {meatDetailsLabels.quality}
+              </p>
             </div>
             <div className="bg-orange-50 p-4 rounded-lg text-center">
               <Clock className="w-6 h-6 text-orange-500 mx-auto mb-2" />
@@ -61,7 +65,9 @@ export default function MeatDetails() {
             <span className="text-3xl font-bold text-orange-600">
               €{item.price}
             </span>
-            <span className="text-gray-500">pro Portion</span>
+            <span className="text-gray-500">
+              {meatDetailsLabels.pricePerPortion}
+            </span>
           </div>
 
           <p className="text-gray-700 mb-8">{item.description}</p>
@@ -69,13 +75,15 @@ export default function MeatDetails() {
           {item.details && (
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4">Zubereitung</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  {meatDetailsLabels.sections.preparation}
+                </h3>
                 <p className="text-gray-700">{item.details.preparation}</p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold mb-4">
-                  Perfekte Beilagen
+                  {meatDetailsLabels.sections.pairings}{" "}
                 </h3>
                 <ul className="grid grid-cols-2 gap-4">
                   {item.details.pairings?.map((pairing, index) => (
@@ -90,23 +98,29 @@ export default function MeatDetails() {
               {item.details.nutritionalInfo && (
                 <div>
                   <h3 className="text-xl font-semibold mb-4">
-                    Nährwertangaben
+                    {meatDetailsLabels.sections.nutrition}
                   </h3>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="bg-orange-50 p-4 rounded-lg text-center">
-                      <p className="text-sm text-gray-600">Protein</p>
+                      <p className="text-sm text-gray-600">
+                        {meatDetailsLabels.nutritionLabels.protein}
+                      </p>
                       <p className="font-bold text-orange-600">
                         {item.details.nutritionalInfo.protein}
                       </p>
                     </div>
                     <div className="bg-orange-50 p-4 rounded-lg text-center">
-                      <p className="text-sm text-gray-600">Fett</p>
+                      <p className="text-sm text-gray-600">
+                        {meatDetailsLabels.nutritionLabels.fat}
+                      </p>
                       <p className="font-bold text-orange-600">
                         {item.details.nutritionalInfo.fat}
                       </p>
                     </div>
                     <div className="bg-orange-50 p-4 rounded-lg text-center">
-                      <p className="text-sm text-gray-600">Kalorien</p>
+                      <p className="text-sm text-gray-600">
+                        {meatDetailsLabels.nutritionLabels.calories}
+                      </p>
                       <p className="font-bold text-orange-600">
                         {item.details.nutritionalInfo.calories}
                       </p>
@@ -121,7 +135,7 @@ export default function MeatDetails() {
             onClick={() => addItem(item)}
             className="w-full mt-8 bg-orange-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
           >
-            In den Warenkorb{" "}
+            {meatDetailsLabels.addToCart}{" "}
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Menu, Flame } from "lucide-react";
 import { useState } from "react";
+import { navbarLabels } from "../../data/Data";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <Flame className="h-8 w-8 text-orange-500" />
-            <span className="text-xl font-bold">Michas Grillshülle</span>
+            <span className="text-xl font-bold">{navbarLabels.brand}</span>
           </Link>
 
           <button
@@ -23,13 +24,13 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-gray-700 hover:text-orange-500">
-              Home
+              {navbarLabels.navLinks.home}
             </Link>
             <Link to="/catalog" className="text-gray-700 hover:text-orange-500">
-              Fleischauswahl
+              {navbarLabels.navLinks.catalog}
             </Link>
             <Link to="/about" className="text-gray-700 hover:text-orange-500">
-              Über Uns
+              {navbarLabels.navLinks.about}
             </Link>
 
             <button
@@ -40,7 +41,7 @@ export default function Navbar() {
                   ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
               }}
             >
-              Warenkorb{" "}
+              {navbarLabels.cartButton}
             </button>
           </div>
         </div>
@@ -52,21 +53,21 @@ export default function Navbar() {
               className="block text-gray-700 hover:text-orange-500"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              {navbarLabels.navLinks.home}
             </Link>
             <Link
               to="/catalog"
               className="block text-gray-700 hover:text-orange-500"
               onClick={() => setIsMenuOpen(false)}
             >
-              Fleischauswahl
+              {navbarLabels.navLinks.catalog}
             </Link>
             <Link
               to="/about"
               className="block text-gray-700 hover:text-orange-500"
               onClick={() => setIsMenuOpen(false)}
             >
-              Über Uns
+              {navbarLabels.navLinks.about}
             </Link>
 
             <button
@@ -77,7 +78,7 @@ export default function Navbar() {
                   ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
               }}
             >
-              Angebot Anfordern
+              {navbarLabels.cartButton}
             </button>
           </div>
         )}

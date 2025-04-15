@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { meatItems } from "../data/Data";
 import { useQuoteStore } from "../store/useQuoteStore";
+import { catalogLabels } from "../data/Data";
 
 export default function Catalog() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,7 +12,7 @@ export default function Catalog() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const addItem = useQuoteStore((state) => state.addItem);
 
-  const categories = ["Beef", "Steak", "Lamm", "Hähnchen", "Würst"];
+  //const categories = ["Beef", "Steak", "Lamm", "Hähnchen", "Würst"];
 
   const filteredItems = meatItems.filter((item) => {
     const matchesSearch =
@@ -43,7 +44,9 @@ export default function Catalog() {
           <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl">
             <div className="p-6 h-full overflow-y-auto">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold">Filter</h2>
+                <h2 className="text-xl font-bold">
+                  {catalogLabels.filter.title}
+                </h2>
                 <button
                   onClick={() => setIsFilterOpen(false)}
                   className="text-gray-500 hover:text-gray-700"
@@ -54,8 +57,11 @@ export default function Catalog() {
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-medium mb-3">Kategorien</h4>
-                  {categories.map((category) => (
+                  <h4 className="font-medium mb-3">
+                    {" "}
+                    {catalogLabels.filter.categories}
+                  </h4>
+                  {catalogLabels.categories.map((category) => (
                     <label
                       key={category}
                       className="flex items-center gap-2 mb-3 cursor-pointer"
@@ -83,7 +89,10 @@ export default function Catalog() {
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-3">Preisbereich</h4>
+                  <h4 className="font-medium mb-3">
+                    {" "}
+                    {catalogLabels.filter.priceRange}
+                  </h4>
                   <div className="space-y-3">
                     <input
                       type="range"
@@ -148,7 +157,7 @@ export default function Catalog() {
                         addItem(item);
                       }}
                     >
-                      In den Warenkorb{" "}
+                      {catalogLabels.card.button}
                     </button>
                   </div>
                 </div>
