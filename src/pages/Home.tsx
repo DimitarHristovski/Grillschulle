@@ -23,7 +23,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl text-center mx-auto text-white">
             <h1 className="text-5xl font-bold mb-6">
-              🔥 {homePageLabels.hero.title}
+              {homePageLabels.hero.title}
             </h1>
             <p className="text-2xl mb-8">{homePageLabels.hero.subtitle} </p>
             <p className="text-lg mb-12 text-gray-200">
@@ -71,7 +71,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
+        <div className="flex flex-col md:flex-row md:items-center gap-12 mb-16">
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-6">
               {homePageLabels.calculator.title}{" "}
