@@ -14,7 +14,6 @@ export default function Navbar() {
             <span className="text-xl font-bold">Michas Grillshülle</span>
           </Link>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden"
@@ -22,7 +21,6 @@ export default function Navbar() {
             <Menu className="h-6 w-6" />
           </button>
 
-          {/* Desktop menu */}
           <div className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-gray-700 hover:text-orange-500">
               Home
@@ -47,7 +45,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 space-y-4">
             <Link

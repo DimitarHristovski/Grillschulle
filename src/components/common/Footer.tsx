@@ -6,12 +6,10 @@ export default function Footer() {
     <footer className="bg-white mt-16">
       <div className="container mx-auto px-6 py-12">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Map Section */}
           <div className="h-[400px] rounded-lg overflow-hidden shadow-lg">
             <MapContainer />
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-4">{contactData.title}</h3>
@@ -19,7 +17,6 @@ export default function Footer() {
             </div>
 
             <div className="space-y-4">
-              {/* Phone */}
               <div className="flex items-center gap-3">
                 <div className="bg-orange-100 p-2 rounded-full">
                   {contactData.phone.icon}
@@ -35,7 +32,6 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Email */}
               <div className="flex items-center gap-3">
                 <div className="bg-orange-100 p-2 rounded-full">
                   {contactData.email.icon}
@@ -51,7 +47,6 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Address */}
               <div>
                 <p className="font-semibold mb-2">
                   {contactData.address.label}
@@ -67,7 +62,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Socials */}
             <div className="pt-6">
               <h4 className="font-semibold mb-4">Folgen Sie uns</h4>
               <div className="flex gap-4">
@@ -87,7 +81,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t mt-12 pt-8 text-center text-gray-500">
           <p>{contactData.copyright}</p>
         </div>

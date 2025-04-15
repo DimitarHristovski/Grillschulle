@@ -29,7 +29,6 @@ export default function Catalog() {
 
   return (
     <div className="pt-24">
-      {/* Filter Button */}
       <div className="fixed bottom-24 right-6 z-40">
         <button
           onClick={() => setIsFilterOpen(true)}
@@ -39,7 +38,6 @@ export default function Catalog() {
         </button>
       </div>
 
-      {/* Filter Drawer */}
       {isFilterOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl">
@@ -110,9 +108,7 @@ export default function Catalog() {
       )}
 
       <div className="container mx-auto px-6">
-        {/* Main Content */}
         <div className="w-full">
-          {/* Search Bar */}
           <div className="relative mb-8">
             <input
               type="text"
@@ -124,7 +120,6 @@ export default function Catalog() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           </div>
 
-          {/* Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item) => (
               <div

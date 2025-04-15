@@ -12,7 +12,6 @@ import PriceCalculator from "../components/quote/PriceCalculator";
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
       <div
         className="relative bg-cover bg-center py-32"
         style={{
@@ -44,7 +43,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Features Section */}
       <div className="py-16 container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -72,7 +70,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Calculator Section */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-6">
