@@ -216,3 +216,131 @@ export const contactData = {
   ],
   copyright: `© ${new Date().getFullYear()} Michas Grillshülle. Alle Rechte vorbehalten.`,
 };
+export const priceCalculatorData = {
+  label0: "  Preisrechner",
+
+  label1: "  Anzahl der Personen",
+  label2: "Personen",
+  label3: "  Basispreis pro Person",
+  label4: "Preis pro Person:",
+  label5: "Rabattvorteil:",
+  label6: "günstiger",
+  label7: "Warenkorb",
+};
+export const navbarLabels = {
+  brand: "Michas Grillshülle",
+  navLinks: {
+    home: "Home",
+    catalog: "Fleischauswahl",
+    about: "Über Uns",
+  },
+  cartButton: "Warenkorb",
+};
+export const quoteDrawerData = {
+  button: "Warenkorb",
+  emptyMessage: "Ihr Essensbestellung Cost ist leer",
+
+  drawer: {
+    title: "Ihr Essensbestellung Cost",
+    closeLabel: "Schließen",
+  },
+
+  confirmation: {
+    title: "Ihre Kalkulation ist abgeschlossen!",
+    message: `Die Berechnung für Ihre Essensbestellung wurde erfolgreich durchgeführt.
+Die PDF-Datei mit Ihrer Kalkulation wurde heruntergeladen.
+Bei Fragen stehen wir Ihnen gerne zur Verfügung.`,
+    productListTitle: "Ihre Essensbestellung Cost:",
+    totalLabel: "Gesamtpreis:",
+    autoCloseNote:
+      "Diese Seite schließt sich automatisch in wenigen Sekunden...",
+  },
+
+  form: {
+    peopleCountLabel: "Anzahl der Personen",
+    nameLabel: "Name",
+    emailLabel: "Email",
+    submitButton: "Berechnen",
+    totalPriceLabel: "Ihre Gesamtkosten:",
+  },
+
+  pdf: {
+    title: "Warenkorb",
+    name: "Name",
+    email: "Email",
+    peopleCount: "Anzahl der Personen",
+    date: "Erstellungsdatum",
+    tableHead: ["Produkt", "Anzahl", "Original Preis", "Sie sparen"],
+    totalLabel: "Gesamtpreis",
+  },
+};
+export const catalogLabels = {
+  pageTitle: "Fleischauswahl",
+  searchPlaceholder: "Fleisch suchen...",
+
+  filter: {
+    title: "Filter",
+    categories: "Kategorien",
+    priceRange: "Preisbereich",
+    priceMinLabel: "€0",
+    priceMaxLabel: "€50",
+  },
+
+  card: {
+    button: "In den Warenkorb",
+  },
+
+  categories: ["Beef", "Steak", "Lamm", "Hähnchen", "Würst"],
+};
+export const homePageLabels = {
+  hero: {
+    title: "🔥 Veranstalte die perfekte Grillparty",
+    subtitle: "Wir bringen das Fleisch, du bringst die Leute!",
+    description:
+      "Premium zubereitetes Fleisch für dein nächstes Treffen. Je mehr Leute du mitbringst, desto weniger zahlt jeder. Frisch gegrillt, perfekt gewürzt, bereit zum Genießen!",
+    cta: "Unsere Auswahl entdecken",
+  },
+
+  features: {
+    quality: {
+      title: "Premium-Qualität",
+      text: "Über 20 Sorten perfekt gegrilltes Premium-Fleisch",
+    },
+    preparation: {
+      title: "Fachmännische Zubereitung",
+      text: "Gewürzt von professionellen BBQ-Köchen",
+    },
+    fresh: {
+      title: "Frisch & Heiß",
+      text: "Heiß geliefert und sofort servierbereit",
+    },
+  },
+
+  calculator: {
+    title: "Berechne deinen Party-Preis",
+    description:
+      "Erhalte ein Sofortangebot für deine Gruppe. Je mehr Personen mitmachen, desto besser wird der Preis! Jede Person erhält eine großzügige 500g-Portion gemischtes Premium-Fleisch.",
+    minPeople: "Mindestens 5 Personen erforderlich",
+    pricingNote: "Wir verkaufen Speisen zu verschiedenen Preisen",
+  },
+};
+export const meatDetailsLabels = {
+  notFound: {
+    title: "Produkt nicht gefunden",
+    back: "Zurück zur Übersicht",
+  },
+  backToCatalog: "Zurück zur Übersicht",
+  quality: "Premium Qualität",
+  pricePerPortion: "pro Portion",
+  sections: {
+    preparation: "Zubereitung",
+    pairings: "Perfekte Beilagen",
+    nutrition: "Nährwertangaben",
+  },
+  nutritionLabels: {
+    protein: "Protein",
+    fat: "Fett",
+    calories: "Kalorien",
+  },
+  addToCart: "In den Warenkorb",
+};

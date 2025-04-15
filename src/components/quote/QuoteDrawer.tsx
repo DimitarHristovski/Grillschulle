@@ -11,7 +11,7 @@ import { useQuoteStore } from "../../store/useQuoteStore";
 import { useState } from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-
+import { quoteDrawerData } from "../../data/Data";
 declare module "jspdf" {
   interface jsPDF {
     lastAutoTable: {
@@ -107,11 +107,10 @@ export default function QuoteDrawer() {
       setEmail("");
       setDate("");
       setShowConfirmation(false);
-    }, 60000);
+    }, 10000);
   };
   return (
     <>
-      {/* Quote Button */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-colors z-50"
@@ -124,7 +123,6 @@ export default function QuoteDrawer() {
         )}
       </button>
 
-      {/* Drawer */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="absolute right-0 top-0 h-full w-full md:w-96 bg-white shadow-xl">
@@ -133,14 +131,10 @@ export default function QuoteDrawer() {
                 <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
                   <CheckCircle className="w-16 h-16 text-green-500 mb-6" />
                   <h2 className="text-2xl font-bold mb-4">
-                    Ihre Kalkulation ist abgeschlossen!
+                    {quoteDrawerData.confirmation.title}{" "}
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    Die Berechnung für Ihre Essensbestellung wurde erfolgreich
-                    durchgeführt. <br />
-                    Die PDF-Datei mit Ihrer Kalkulation wurde heruntergeladen.{" "}
-                    <br />
-                    Bei Fragen stehen wir Ihnen gerne zur Verfügung.
+                    {quoteDrawerData.confirmation.message}{" "}
                   </p>
                   {/*    {pdfUrl && (
                     <a
@@ -156,7 +150,7 @@ export default function QuoteDrawer() {
              */}
                   <div className="bg-gray-50 p-4 rounded-lg w-full mb-6">
                     <h3 className="font-semibold mb-2">
-                      Ihre Essensbestellung Cost:
+                      {quoteDrawerData.confirmation.productListTitle}{" "}
                     </h3>
                     <ul className="text-left space-y-2">
                       {items.map((item) => (
@@ -167,21 +161,21 @@ export default function QuoteDrawer() {
                       ))}
                     </ul>
                     <div className="border-t mt-4 pt-4 flex justify-between font-bold">
-                      <span>Gesamtpreis:</span>
+                      <span> {quoteDrawerData.confirmation.totalLabel} </span>
                       <span className="text-orange-600">
                         €{getTotalPrice().toFixed(2)}
                       </span>
                     </div>
                   </div>
                   <p className="text-sm text-gray-500">
-                    Diese Seite schließt sich automatisch in wenigen Sekunden...
+                    {quoteDrawerData.confirmation.autoCloseNote}{" "}
                   </p>
                 </div>
               ) : (
                 <>
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-bold">
-                      Ihr Essensbestellung Cost
+                      {quoteDrawerData.drawer.title}{" "}
                     </h2>
                     <button
                       onClick={() => setIsOpen(false)}
@@ -193,7 +187,7 @@ export default function QuoteDrawer() {
 
                   {items.length === 0 ? (
                     <div className="flex-1 flex items-center justify-center text-gray-500">
-                      Ihr Essensbestellung Cost ist leer
+                      {quoteDrawerData.emptyMessage}{" "}
                     </div>
                   ) : (
                     <form
@@ -258,11 +252,15 @@ export default function QuoteDrawer() {
                         <div className="space-y-4 mb-6">
                           <div className="flex items-center gap-2 bg-orange-50 p-4 rounded-lg">
                             <Users className="w-5 h-5 text-orange-500" />
-                            <span>Anzahl der Personen: {peopleCount}</span>
+                            <span>
+                              {" "}
+                              {quoteDrawerData.form.peopleCountLabel}{" "}
+                              {peopleCount}
+                            </span>
                           </div>
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Name
+                              {quoteDrawerData.form.nameLabel}
                             </label>
                             <input
                               type="text"
@@ -275,7 +273,7 @@ export default function QuoteDrawer() {
 
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Email
+                              {quoteDrawerData.form.emailLabel}
                             </label>
                             <input
                               type="email"
@@ -290,7 +288,7 @@ export default function QuoteDrawer() {
 
                       <div className="border-t pt-4 space-y-4">
                         <div className="flex justify-between items-center font-bold text-lg">
-                          <span>Ihre Gesamtkosten:</span>
+                          <span>{quoteDrawerData.form.totalPriceLabel}</span>
                           <span className="text-orange-600">
                             €{getTotalPrice().toFixed(2)}
                           </span>
@@ -299,7 +297,7 @@ export default function QuoteDrawer() {
                           type="submit"
                           className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
                         >
-                          Berechnen{" "}
+                          {quoteDrawerData.form.submitButton}{" "}
                         </button>
                       </div>
                     </form>
